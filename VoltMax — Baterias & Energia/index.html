@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltMax — Baterias &amp; Energia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&amp;family=Barlow:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --amarelo: #FFD600;
+        --amarelo-escuro: #C4A800;
+        --preto: #080808;
+        --cinza-escuro: #111111;
+        --cinza-medio: #1C1C1C;
+        --cinza-claro: #2E2E2E;
+        --texto: #E8E8E8;
+        --texto-muted: #888;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Barlow', sans-serif;
+        background: var(--preto);
+        color: var(--texto);
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* CURSOR CUSTOMIZADO */
+      .cursor {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: var(--amarelo);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s, width 0.2s, height 0.2s;
+        mix-blend-mode: difference;
+      }
+
+      .cursor.grande {
+        width: 40px;
+        height: 40px;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 3rem;
+        background: rgba(8, 8, 8, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 214, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      nav.scrolled {
+        padding: 0.8rem 3rem;
+        border-bottom-color: rgba(255, 214, 0, 0.25);
+      }
+
+      .logo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        color: var(--amarelo);
+        letter-spacing: 2px;
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--texto);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--texto-muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: color 0.2s;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: var(--amarelo);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--amarelo);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .btn-nav {
+        background: var(--amarelo);
+        color: var(--preto);
+        padding: 0.55rem 1.4rem;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        border: none;
+        cursor: none;
+        transition: background 0.2s, transform 0.1s;
+        clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+      }
+
+      .btn-nav:hover {
+        background: #fff;
+        transform: scale(1.04);
+      }
+
+      /* SEÇÕES */
+      section {
+        padding: 6rem 3rem;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      /* HERO */
+      #hero {
+        min-height: 100vh;
+        max-width: 100%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 50% at 70% 50%, rgba(255, 214, 0, 0.07) 0%, transparent 70%),
+          radial-gradient(ellipse 30% 80% at 10% 50%, rgba(255, 214, 0, 0.04) 0%, transparent 60%);
+      }
+
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 214, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 214, 0, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          background-position: 0 0, 0 0;
+        }
+
+        100% {
+          background-position: 60px 60px, 60px 60px;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 2rem;
+        animation: fadeUp 0.8s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--amarelo);
+        border: 1px solid rgba(255, 214, 0, 0.4);
+        padding: 0.35rem 1rem;
+        margin-bottom: 1.5rem;
+        animation: fadeUp 0.8s 0.1s ease both;
+      }
+
+      .hero-titulo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: clamp(4rem, 12vw, 9rem);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        animation: fadeUp 0.8s 0.2s ease both;
+      }
+
+      .hero-titulo .destaque {
+        color: var(--amarelo);
+        display: block;
+        text-shadow: 0 0 80px rgba(255, 214, 0, 0.3);
+      }
+
+      .hero-subtitulo {
+        margin: 1.5rem auto 2.5rem;
+        max-width: 500px;
+        font-size: 1.1rem;
+        color: var(--texto-muted);
+        line-height: 1.7;
+        animation: fadeUp 0.8s 0.3s ease both;
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeUp 0.8s 0.4s ease both;
+      }
+
+      .btn-primario {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--amarelo);
+        color: var(--preto);
+        padding: 0.9rem 2.2rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        cursor: none;
+        clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+        transition: background 0.2s, transform 0.1s;
+      }
+
+      .btn-primario:hover {
+        background: #fff;
+        transform: scale(1.03);
+      }
+
+      .btn-secundario {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--texto);
+        padding: 0.9rem 2.2rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .btn-secundario:hover {
+        border-color: var(--amarelo);
+        color: var(--amarelo);
+      }
+
+      .hero-stats {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 3rem;
+        animation: fadeUp 0.8s 0.6s ease both;
+      }
+
+      .stat {
+        text-align: center;
+      }
+
+      .stat-num {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--amarelo);
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--texto-muted);
+      }
+
+      /* CATEGORIAS */
+      #categorias {
+        padding-top: 7rem;
+        padding-bottom: 5rem;
+      }
+
+      .secao-header {
+        margin-bottom: 3rem;
+      }
+
+      .secao-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--amarelo);
+        margin-bottom: 0.5rem;
+      }
+
+      .secao-titulo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+
+      .categorias-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5px;
+      }
+
+      .categoria-card {
+        background: var(--cinza-escuro);
+        padding: 2.5rem 2rem;
+        position: relative;
+        overflow: hidden;
+        cursor: none;
+        transition: background 0.3s;
+      }
+
+      .categoria-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 214, 0, 0.08) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .categoria-card:hover {
+        background: var(--cinza-medio);
+      }
+
+      .categoria-card:hover::before {
+        opacity: 1;
+      }
+
+      .categoria-card:hover .cat-icone {
+        color: var(--amarelo);
+      }
+
+      .cat-icone {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+      }
+
+      .cat-nome {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+      }
+
+      .cat-desc {
+        font-size: 0.85rem;
+        color: var(--texto-muted);
+        line-height: 1.5;
+      }
+
+      .cat-seta {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        color: var(--amarelo);
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: opacity 0.3s, transform 0.3s;
+      }
+
+      .categoria-card:hover .cat-seta {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* PRODUTOS */
+      #produtos {
+        padding-top: 5rem;
+      }
+
+      .produtos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1px;
+        margin-top: 2.5rem;
+      }
+
+      .produto-card {
+        background: var(--cinza-escuro);
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        cursor: none;
+        transition: background 0.3s;
+      }
+
+      .produto-card:hover {
+        background: var(--cinza-medio);
+      }
+
+      .produto-img {
+        height: 200px;
+        background: var(--cinza-medio);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .produto-img::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 50%, var(--cinza-escuro));
+      }
+
+      .badge-novo {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: var(--amarelo);
+        color: var(--preto);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        z-index: 2;
+      }
+
+      .produto-info {
+        padding: 1.5rem;
+      }
+
+      .produto-cat {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--amarelo);
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+      }
+
+      .produto-nome {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+      }
+
+      .produto-specs {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.2rem;
+      }
+
+      .spec-tag {
+        font-size: 0.72rem;
+        color: var(--texto-muted);
+        border: 1px solid var(--cinza-claro);
+        padding: 0.2rem 0.6rem;
+        letter-spacing: 1px;
+      }
+
+      .produto-rodape {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .produto-preco {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--amarelo);
+      }
+
+      .produto-preco small {
+        font-size: 0.9rem;
+        color: var(--texto-muted);
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        display: block;
+        margin-bottom: -4px;
+      }
+
+      .btn-comprar {
+        background: transparent;
+        border: 1px solid rgba(255, 214, 0, 0.4);
+        color: var(--amarelo);
+        padding: 0.5rem 1.2rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: none;
+        clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .btn-comprar:hover {
+        background: var(--amarelo);
+        color: var(--preto);
+      }
+
+      /* DIFERENCIAIS */
+      #diferenciais {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        background: var(--cinza-escuro);
+        max-width: 100%;
+        border-top: 1px solid rgba(255, 214, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 214, 0, 0.1);
+      }
+
+      #diferenciais .inner {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .dif-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .dif-item {
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .dif-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--amarelo);
+      }
+
+      .dif-num {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: rgba(255, 214, 0, 0.15);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .dif-titulo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .dif-desc {
+        font-size: 0.85rem;
+        color: var(--texto-muted);
+        line-height: 1.7;
+      }
+
+      /* BANNER */
+      #banner {
+        max-width: 100%;
+        background: var(--amarelo);
+        padding: 4rem 3rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #banner::before {
+        content: 'VOLTMAX';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 20vw;
+        font-weight: 900;
+        color: rgba(0, 0, 0, 0.05);
+        white-space: nowrap;
+        pointer-events: none;
+        letter-spacing: -5px;
+      }
+
+      .banner-titulo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var(--preto);
+        line-height: 1;
+        position: relative;
+      }
+
+      .banner-sub {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 1rem 0 2rem;
+        position: relative;
+      }
+
+      .btn-banner {
+        display: inline-block;
+        background: var(--preto);
+        color: var(--amarelo);
+        padding: 1rem 3rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: none;
+        clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+        transition: background 0.2s;
+        position: relative;
+      }
+
+      .btn-banner:hover {
+        background: #1a1a1a;
+      }
+
+      /* CONTATO */
+      #contato {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+      }
+
+      .contato-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 5rem;
+        align-items: start;
+        margin-top: 3rem;
+      }
+
+      .contato-info h3 {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--amarelo);
+        margin-bottom: 1.5rem;
+      }
+
+      .info-linha {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-icone {
+        font-size: 1.3rem;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .info-texto {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .info-texto strong {
+        display: block;
+        color: var(--texto);
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .info-texto span {
+        color: var(--texto-muted);
+      }
+
+      .form-grupo {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--texto-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        background: var(--cinza-escuro);
+        border: 1px solid var(--cinza-claro);
+        color: var(--texto);
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        font-family: 'Barlow', sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+        appearance: none;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        border-color: var(--amarelo);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .btn-enviar {
+        width: 100%;
+        background: var(--amarelo);
+        color: var(--preto);
+        padding: 1rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: none;
+        cursor: none;
+        clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+        transition: background 0.2s, transform 0.1s;
+        margin-top: 0.5rem;
+      }
+
+      .btn-enviar:hover {
+        background: #fff;
+        transform: scale(1.01);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--cinza-escuro);
+        border-top: 1px solid rgba(255, 214, 0, 0.1);
+        padding: 2.5rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer-logo {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 1.4rem;
+        color: var(--amarelo);
+        letter-spacing: 2px;
+      }
+
+      .footer-logo span {
+        color: var(--texto-muted);
+      }
+
+      .footer-copy {
+        font-size: 0.8rem;
+        color: var(--texto-muted);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--cinza-claro);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--texto-muted);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .social-link:hover {
+        border-color: var(--amarelo);
+        color: var(--amarelo);
+      }
+
+      /* TICKER */
+      .ticker-wrap {
+        background: var(--amarelo);
+        overflow: hidden;
+        padding: 0.5rem 0;
+      }
+
+      .ticker {
+        display: flex;
+        gap: 0;
+        width: max-content;
+        animation: ticker 25s linear infinite;
+      }
+
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .ticker-item {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--preto);
+        padding: 0 2rem;
+        white-space: nowrap;
+      }
+
+      .ticker-sep {
+        color: rgba(0, 0, 0, 0.3);
+        padding: 0;
+      }
+
+      /* ANIMAÇÃO DE ENTRADA */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        section {
+          padding: 4rem 1.5rem;
+        }
+
+        .hero-stats {
+          gap: 1.5rem;
+        }
+
+        .contato-layout {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        footer {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        #diferenciais .inner {
+          padding: 0 1.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+
+    <div class="cursor" id="cursor"></div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <a href="#" class="logo">VOLT<span>MAX</span></a>
+      <ul class="nav-links">
+        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#diferenciais">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <button class="btn-nav" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Pedir Orçamento</button>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-tag">⚡ Especialistas em Energia</div>
+        <h1 class="hero-titulo">
+          Energia que<br>
+          <span class="destaque">Não Para</span>
+        </h1>
+        <p class="hero-subtitulo">Baterias de alto desempenho para automotivos, indústria, energia solar e muito mais. Qualidade que você pode confiar.</p>
+        <div class="hero-ctas">
+          <a href="#produtos" class="btn-primario">⚡ Ver Produtos</a>
+          <a href="#contato" class="btn-secundario">Solicitar Orçamento →</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">15K+</div>
+          <div class="stat-label">Clientes Atendidos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">200+</div>
+          <div class="stat-label">Modelos em Estoque</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Anos de Mercado</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span class="ticker-item">🔋 Pronta Entrega</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Garantia de Fábrica</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Instalação Grátis</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Frete para Todo Brasil</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Parcelamento em 12x</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Suporte Técnico 24h</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">🔋 Pronta Entrega</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Garantia de Fábrica</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Instalação Grátis</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Frete para Todo Brasil</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Parcelamento em 12x</span><span class="ticker-sep"> · </span>
+        <span class="ticker-item">Suporte Técnico 24h</span><span class="ticker-sep"> · </span>
+      </div>
+    </div>
+
+    <!-- CATEGORIAS -->
+    <section id="categorias">
+      <div class="secao-header reveal">
+        <p class="secao-tag">// O que vendemos</p>
+        <h2 class="secao-titulo">Categorias</h2>
+      </div>
+      <div class="categorias-grid">
+        <div class="categoria-card reveal">
+          <div class="cat-icone">🚗</div>
+          <div class="cat-nome">Automotivo</div>
+          <div class="cat-desc">Baterias para carros, motos, caminhões e frotas. Marcas líderes do mercado.</div>
+          <div class="cat-seta">→</div>
+        </div>
+        <div class="categoria-card reveal">
+          <div class="cat-icone">🏭</div>
+          <div class="cat-nome">Industrial</div>
+          <div class="cat-desc">Soluções de alta capacidade para forklifts, máquinas e equipamentos pesados.</div>
+          <div class="cat-seta">→</div>
+        </div>
+        <div class="categoria-card reveal">
+          <div class="cat-icone">☀️</div>
+          <div class="cat-nome">Solar &amp; Nobreak</div>
+          <div class="cat-desc">Armazenamento para sistemas fotovoltaicos e proteção contra quedas de energia.</div>
+          <div class="cat-seta">→</div>
+        </div>
+        <div class="categoria-card reveal">
+          <div class="cat-icone">🚤</div>
+          <div class="cat-nome">Náutico</div>
+          <div class="cat-desc">Baterias resistentes para embarcações, lanchas e barcos de pesca.</div>
+          <div class="cat-seta">→</div>
+        </div>
+        <div class="categoria-card reveal">
+          <div class="cat-icone">🔌</div>
+          <div class="cat-nome">Seladas AGM</div>
+          <div class="cat-desc">Tecnologia avançada para alarmes, cercas elétricas e sistemas de segurança.</div>
+          <div class="cat-seta">→</div>
+        </div>
+        <div class="categoria-card reveal">
+          <div class="cat-icone">⚙️</div>
+          <div class="cat-nome">Acessórios</div>
+          <div class="cat-desc">Carregadores, terminais, cabos e tudo para manutenção e instalação.</div>
+          <div class="cat-seta">→</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section id="produtos">
+      <div class="secao-header reveal">
+        <p class="secao-tag">// Destaques</p>
+        <h2 class="secao-titulo">Mais Vendidos</h2>
+      </div>
+      <div class="produtos-grid">
+
+        <div class="produto-card reveal">
+          <div class="produto-img">🔋<span class="badge-novo">Novo</span></div>
+          <div class="produto-info">
+            <div class="produto-cat">Automotivo</div>
+            <div class="produto-nome">Heliar HF60 Free</div>
+            <div class="produto-specs">
+              <span class="spec-tag">60Ah</span>
+              <span class="spec-tag">500A</span>
+              <span class="spec-tag">Livre Manutenção</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 389</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img">🏋️</div>
+          <div class="produto-info">
+            <div class="produto-cat">Industrial</div>
+            <div class="produto-nome">Moura ME150</div>
+            <div class="produto-specs">
+              <span class="spec-tag">150Ah</span>
+              <span class="spec-tag">12V</span>
+              <span class="spec-tag">Ciclo Profundo</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 1.290</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img">☀️<span class="badge-novo">Top</span></div>
+          <div class="produto-info">
+            <div class="produto-cat">Solar</div>
+            <div class="produto-nome">Unipower AGM200</div>
+            <div class="produto-specs">
+              <span class="spec-tag">200Ah</span>
+              <span class="spec-tag">AGM Selada</span>
+              <span class="spec-tag">VRLA</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 2.150</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img">🚗</div>
+          <div class="produto-info">
+            <div class="produto-cat">Automotivo</div>
+            <div class="produto-nome">Bosch S4 X75</div>
+            <div class="produto-specs">
+              <span class="spec-tag">75Ah</span>
+              <span class="spec-tag">680A</span>
+              <span class="spec-tag">Start-Stop</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 620</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img">🔌</div>
+          <div class="produto-info">
+            <div class="produto-cat">Nobreak</div>
+            <div class="produto-nome">Ortho OT12-28</div>
+            <div class="produto-specs">
+              <span class="spec-tag">28Ah</span>
+              <span class="spec-tag">Selada</span>
+              <span class="spec-tag">AGM</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 290</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img">🚤</div>
+          <div class="produto-info">
+            <div class="produto-cat">Náutico</div>
+            <div class="produto-nome">Varta Marine 110</div>
+            <div class="produto-specs">
+              <span class="spec-tag">110Ah</span>
+              <span class="spec-tag">Dual Purpose</span>
+              <span class="spec-tag">12V</span>
+            </div>
+            <div class="produto-rodape">
+              <div class="produto-preco"><small>a partir de</small>R$ 980</div>
+              <button class="btn-comprar">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <div id="diferenciais">
+      <div class="inner">
+        <div class="secao-header reveal">
+          <p class="secao-tag">// Por que a VoltMax</p>
+          <h2 class="secao-titulo">Nossos Diferenciais</h2>
+        </div>
+        <div class="dif-grid">
+          <div class="dif-item reveal">
+            <div class="dif-num">01</div>
+            <div class="dif-titulo">Maior Estoque da Região</div>
+            <div class="dif-desc">Mais de 200 modelos prontos para pronta entrega. Atendemos de pessoa física a grandes frotas empresariais.</div>
+          </div>
+          <div class="dif-item reveal">
+            <div class="dif-num">02</div>
+            <div class="dif-titulo">Instalação Gratuita</div>
+            <div class="dif-desc">Nossa equipe técnica realiza a instalação sem custo adicional na compra de qualquer bateria automotiva ou industrial.</div>
+          </div>
+          <div class="dif-item reveal">
+            <div class="dif-num">03</div>
+            <div class="dif-titulo">Garantia Estendida</div>
+            <div class="dif-desc">Trabalhamos com as melhores marcas e oferecemos garantia de fábrica com suporte técnico especializado.</div>
+          </div>
+          <div class="dif-item reveal">
+            <div class="dif-num">04</div>
+            <div class="dif-titulo">Descarte Responsável</div>
+            <div class="dif-desc">Recebemos baterias usadas para descarte ecológico correto, contribuindo com o meio ambiente e a legislação vigente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANNER CTA -->
+    <div id="banner">
+      <h2 class="banner-titulo">Precisa de<br>Orçamento Rápido?</h2>
+      <p class="banner-sub">Resposta em até 2 horas úteis. Atendemos por WhatsApp ou e-mail.</p>
+      <a href="#contato" class="btn-banner">📲 Falar no WhatsApp</a>
+    </div>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="secao-header reveal">
+        <p class="secao-tag">// Fale conosco</p>
+        <h2 class="secao-titulo">Contato</h2>
+      </div>
+      <div class="contato-layout">
+        <div class="contato-info reveal">
+          <h3>Informações</h3>
+          <div class="info-linha">
+            <div class="info-icone">📍</div>
+            <div class="info-texto">
+              <strong>Endereço</strong>
+              <span>Av. Industrial, 1450 — Jardim das Indústrias<br>São Paulo, SP — CEP 04000-000</span>
+            </div>
+          </div>
+          <div class="info-linha">
+            <div class="info-icone">📞</div>
+            <div class="info-texto">
+              <strong>Telefone / WhatsApp</strong>
+              <span>(11) 9 9999-8888</span>
+            </div>
+          </div>
+          <div class="info-linha">
+            <div class="info-icone">📧</div>
+            <div class="info-texto">
+              <strong>E-mail</strong>
+              <span>vendas@voltmax.com.br</span>
+            </div>
+          </div>
+          <div class="info-linha">
+            <div class="info-icone">🕐</div>
+            <div class="info-texto">
+              <strong>Horário de Atendimento</strong>
+              <span>Seg–Sex: 08h–18h · Sáb: 08h–13h</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="form-grid">
+            <div class="form-grupo">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-input" placeholder="Seu nome">
+            </div>
+            <div class="form-grupo">
+              <label class="form-label">Telefone</label>
+              <input type="tel" class="form-input" placeholder="(11) 9 0000-0000">
+            </div>
+          </div>
+          <div class="form-grupo">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-input" placeholder="voce@email.com">
+          </div>
+          <div class="form-grupo">
+            <label class="form-label">Tipo de bateria</label>
+            <select class="form-select">
+              <option value="">Selecione a categoria</option>
+              <option>Automotivo</option>
+              <option>Industrial</option>
+              <option>Solar / Nobreak</option>
+              <option>Náutico</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label class="form-label">Mensagem</label>
+            <textarea class="form-textarea" placeholder="Descreva sua necessidade, modelo do veículo ou equipamento..."></textarea>
+          </div>
+          <button class="btn-enviar">⚡ Enviar Mensagem</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">VOLT<span>MAX</span></div>
+      <div class="footer-copy">© 2025 VoltMax Baterias. Todos os direitos reservados.</div>
+      <div class="footer-social">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">wa</a>
+      </div>
+    </footer>
+
+    <script>
+      // Cursor
+      const cur = document.getElementById('cursor');
+      document.addEventListener('mousemove', e => {
+        cur.style.left = e.clientX + 'px';
+        cur.style.top = e.clientY + 'px';
+      });
+      document.querySelectorAll('a, button, .categoria-card, .produto-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cur.classList.add('grande'));
+        el.addEventListener('mouseleave', () => cur.classList.remove('grande'));
+      });
+
+      // Navbar scroll
+      window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // Reveal on scroll
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visivel');
+        });
+      }, {
+        threshold: 0.15
+      });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+
+  </body>
+
+</html>

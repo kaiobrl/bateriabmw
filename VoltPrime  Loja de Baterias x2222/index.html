@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VoltPrime | Loja de Baterias</title>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+
+    <!-- LOADING -->
+    <div class="loading-screen">
+      <div class="battery-loader">
+        <div class="battery-level"></div>
+      </div>
+      <span>Carregando Energia...</span>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- NAVBAR -->
+    <header class="header">
+      <nav class="navbar container">
+
+        <div class="logo">
+          <i class="fa-solid fa-bolt"></i>
+          <span>VoltPrime</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#finder">Buscar</a></li>
+          <li><a href="#products">Produtos</a></li>
+          <li><a href="#services">Serviços</a></li>
+          <li><a href="#reviews">Avaliações</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+
+        <div class="nav-actions">
+
+          <button class="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <button class="cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-count">0</span>
+          </button>
+
+          <button class="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+        </div>
+
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content">
+
+        <div class="hero-text">
+
+          <span class="hero-badge">
+          ⚡ Entrega em até 30 minutos
+        </span>
+
+          <h1>
+            Energia que move
+            <span>seu veículo.</span>
+          </h1>
+
+          <p>
+            Baterias automotivas premium com instalação grátis,
+            entrega rápida e garantia nacional.
+          </p>
+
+          <div class="hero-buttons">
+
+            <button class="btn-primary">
+              Encontrar bateria
+            </button>
+
+            <button class="btn-secondary">
+              <i class="fa-brands fa-whatsapp"></i>
+              WhatsApp
+            </button>
+
+          </div>
+
+          <div class="hero-stats">
+
+            <div class="stat-card">
+              <h3>+5k</h3>
+              <p>Clientes</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>24h</h3>
+              <p>Suporte</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>100%</h3>
+              <p>Garantia</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="hero-image">
+
+          <div class="battery-card">
+
+            <div class="battery-top"></div>
+
+            <div class="battery-energy"></div>
+
+            <div class="battery-info">
+              <h3>Moura 60Ah</h3>
+              <p>Alta performance</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FINDER -->
+    <section class="finder section" id="finder">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>Busca Inteligente</span>
+          <h2>Encontre a bateria ideal</h2>
+        </div>
+
+        <div class="finder-box">
+
+          <div class="finder-grid">
+
+            <div class="input-group">
+              <label>Marca do carro</label>
+              <select>
+                <option>Selecione</option>
+                <option>Honda</option>
+                <option>Toyota</option>
+                <option>Fiat</option>
+                <option>Volkswagen</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>Modelo</label>
+              <select>
+                <option>Selecione</option>
+                <option>Civic</option>
+                <option>Corolla</option>
+                <option>Gol</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>Ano</label>
+              <select>
+                <option>Selecione</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+              </select>
+            </div>
+
+            <button class="btn-primary finder-btn">
+              Buscar Agora
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories section">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>Categorias</span>
+          <h2>Escolha sua bateria</h2>
+        </div>
+
+        <div class="categories-grid">
+
+          <div class="category-card">
+            <i class="fa-solid fa-car"></i>
+            <h3>Automotiva</h3>
+          </div>
+
+          <div class="category-card">
+            <i class="fa-solid fa-motorcycle"></i>
+            <h3>Moto</h3>
+          </div>
+
+          <div class="category-card">
+            <i class="fa-solid fa-truck"></i>
+            <h3>Caminhão</h3>
+          </div>
+
+          <div class="category-card">
+            <i class="fa-solid fa-solar-panel"></i>
+            <h3>Solar</h3>
+          </div>
+
+          <div class="category-card">
+            <i class="fa-solid fa-plug-circle-bolt"></i>
+            <h3>Nobreak</h3>
+          </div>
+
+          <div class="category-card">
+            <i class="fa-solid fa-battery-full"></i>
+            <h3>Estacionária</h3>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products section" id="products">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>Produtos</span>
+          <h2>Baterias em destaque</h2>
+        </div>
+
+        <div class="products-grid">
+
+          <!-- PRODUCT -->
+          <div class="product-card">
+
+            <div class="product-badge">
+              Mais vendido
+            </div>
+
+            <div class="product-image">
+              <i class="fa-solid fa-car-battery"></i>
+            </div>
+
+            <div class="product-info">
+
+              <h3>Moura 60Ah</h3>
+
+              <p>
+                Alta durabilidade e desempenho premium.
+              </p>
+
+              <div class="product-meta">
+                <span>12 meses</span>
+                <span>60Ah</span>
+              </div>
+
+              <div class="product-footer">
+
+                <h4>R$ 499</h4>
+
+                <button class="buy-btn">
+                  Comprar
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- PRODUCT -->
+          <div class="product-card">
+
+            <div class="product-image">
+              <i class="fa-solid fa-car-battery"></i>
+            </div>
+
+            <div class="product-info">
+
+              <h3>Heliar 70Ah</h3>
+
+              <p>
+                Potência máxima para veículos premium.
+              </p>
+
+              <div class="product-meta">
+                <span>18 meses</span>
+                <span>70Ah</span>
+              </div>
+
+              <div class="product-footer">
+
+                <h4>R$ 649</h4>
+
+                <button class="buy-btn">
+                  Comprar
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- PRODUCT -->
+          <div class="product-card">
+
+            <div class="product-image">
+              <i class="fa-solid fa-car-battery"></i>
+            </div>
+
+            <div class="product-info">
+
+              <h3>Bosch 50Ah</h3>
+
+              <p>
+                Excelente custo-benefício e eficiência.
+              </p>
+
+              <div class="product-meta">
+                <span>12 meses</span>
+                <span>50Ah</span>
+              </div>
+
+              <div class="product-footer">
+
+                <h4>R$ 399</h4>
+
+                <button class="buy-btn">
+                  Comprar
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services section" id="services">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>Diferenciais</span>
+          <h2>Por que escolher a VoltPrime?</h2>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>Entrega Rápida</h3>
+            <p>
+              Atendimento emergencial na sua localização.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h3>Instalação Grátis</h3>
+            <p>
+              Técnicos especializados e atendimento premium.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <i class="fa-solid fa-shield"></i>
+            <h3>Garantia Nacional</h3>
+            <p>
+              Segurança total para seu veículo.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <i class="fa-solid fa-headset"></i>
+            <h3>Suporte 24h</h3>
+            <p>
+              Atendimento rápido e eficiente.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BRANDS -->
+    <section class="brands section">
+
+      <div class="container">
+
+        <div class="brands-slider">
+
+          <div class="brand-item">MOURA</div>
+          <div class="brand-item">HELIAR</div>
+          <div class="brand-item">BOSCH</div>
+          <div class="brand-item">ZETTA</div>
+          <div class="brand-item">TUDOR</div>
+          <div class="brand-item">PIONEIRO</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews section" id="reviews">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>Avaliações</span>
+          <h2>O que nossos clientes dizem</h2>
+        </div>
+
+        <div class="reviews-grid">
+
+          <div class="review-card">
+
+            <div class="review-stars">
+              ★★★★★
+            </div>
+
+            <p>
+              Atendimento extremamente rápido e bateria excelente.
+            </p>
+
+            <div class="review-user">
+              <strong>Lucas Martins</strong>
+            </div>
+
+          </div>
+
+          <div class="review-card">
+
+            <div class="review-stars">
+              ★★★★★
+            </div>
+
+            <p>
+              Instalação em casa e ótimo suporte.
+            </p>
+
+            <div class="review-user">
+              <strong>Fernanda Lima</strong>
+            </div>
+
+          </div>
+
+          <div class="review-card">
+
+            <div class="review-stars">
+              ★★★★★
+            </div>
+
+            <p>
+              Site muito moderno e compra super fácil.
+            </p>
+
+            <div class="review-user">
+              <strong>Ricardo Alves</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section">
+
+      <div class="container">
+
+        <div class="section-title">
+          <span>FAQ</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+
+        <div class="faq-container">
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              Quanto tempo dura uma bateria?
+              <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="faq-answer">
+              Em média de 2 a 4 anos dependendo do uso.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              Vocês fazem instalação?
+              <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="faq-answer">
+              Sim, instalação gratuita em várias regiões.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question">
+              Tem garantia?
+              <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <div class="faq-answer">
+              Todas as baterias possuem garantia nacional.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact section" id="contact">
+
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+
+          <span class="contact-tag">
+          Contato
+        </span>
+
+          <h2>Fale com nossa equipe</h2>
+
+          <p>
+            Atendimento rápido e suporte especializado.
+          </p>
+
+          <div class="contact-items">
+
+            <div class="contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <span>(83) 99999-9999</span>
+            </div>
+
+            <div class="contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>João Pessoa - PB</span>
+            </div>
+
+            <div class="contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>contato@voltprime.com</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <form class="contact-form">
+
+          <div class="input-group">
+            <label>Nome</label>
+            <input type="text" placeholder="Seu nome">
+          </div>
+
+          <div class="input-group">
+            <label>Telefone</label>
+            <input type="text" placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="input-group">
+            <label>Mensagem</label>
+            <textarea placeholder="Digite sua mensagem"></textarea>
+          </div>
+
+          <button class="btn-primary">
+            Enviar mensagem
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <div class="container footer-content">
+
+        <div class="footer-logo">
+
+          <i class="fa-solid fa-bolt"></i>
+
+          <span>VoltPrime</span>
+
+        </div>
+
+        <p>
+          © 2026 VoltPrime. Todos os direitos reservados.
+        </p>
+
+        <div class="footer-socials">
+
+          <a href="#">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+
+          <a href="#">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="#" class="whatsapp-float">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="app.js"></script>
+
+
+  </body>
+
+</html>

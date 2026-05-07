@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltMax Baterias — Especialista em Baterias Automotivas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;900&amp;family=Source+Sans+3:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --navy: #0c1f3f;
+        --navy-mid: #162d54;
+        --navy-light: #1e3d6e;
+        --gold: #c08c1a;
+        --gold-light: #e2a820;
+        --gold-pale: #f5e8c0;
+        --cream: #f8f5ef;
+        --white: #ffffff;
+        --gray-100: #f0ece4;
+        --gray-300: #c8c2b6;
+        --gray-500: #7a7368;
+        --gray-700: #3c3830;
+        --text-dark: #0c1f3f;
+        --text-mid: #4a4238;
+        --radius: 6px;
+        --shadow: 0 4px 24px rgba(12, 31, 63, 0.10);
+        --shadow-hover: 0 8px 32px rgba(12, 31, 63, 0.18);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: 'Source Sans 3', sans-serif;
+        background: var(--cream);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /* ── HEADER ── */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--navy);
+        padding: 0 2rem;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 3px solid var(--gold);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Bitter', serif;
+        font-size: 1.35rem;
+        font-weight: 900;
+        color: var(--white);
+        text-decoration: none;
+        letter-spacing: -0.3px;
+      }
+
+      .logo span {
+        color: var(--gold-light);
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--gold);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+
+      nav {
+        display: flex;
+        gap: 0;
+      }
+
+      nav a {
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0 1.1rem;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -3px;
+        transition: color 0.2s, border-color 0.2s;
+      }
+
+      nav a:hover {
+        color: var(--white);
+        border-color: var(--gold-light);
+      }
+
+      .nav-cta {
+        background: var(--gold) !important;
+        color: var(--navy) !important;
+        padding: 0 1.4rem !important;
+        border-radius: var(--radius);
+        margin-left: 0.5rem;
+        height: 38px !important;
+        align-self: center;
+        border-bottom: none !important;
+      }
+
+      .nav-cta:hover {
+        background: var(--gold-light) !important;
+      }
+
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--white);
+        margin: 5px 0;
+        transition: 0.3s;
+      }
+
+      /* ── HERO ── */
+      #hero {
+        min-height: 100vh;
+        background: var(--navy);
+        display: flex;
+        align-items: center;
+        padding: 120px 2rem 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-grid {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(192, 140, 26, 0.18);
+        border: 1px solid rgba(192, 140, 26, 0.4);
+        color: var(--gold-light);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-badge::before {
+        content: '●';
+        font-size: 0.5rem;
+      }
+
+      h1 {
+        font-family: 'Bitter', serif;
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+        font-weight: 900;
+        line-height: 1.15;
+        color: var(--white);
+        margin-bottom: 1.25rem;
+      }
+
+      h1 em {
+        color: var(--gold-light);
+        font-style: normal;
+      }
+
+      .hero-sub {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.7;
+        margin-bottom: 2.2rem;
+        font-weight: 300;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--gold);
+        color: var(--navy);
+        padding: 0.85rem 2rem;
+        border-radius: var(--radius);
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: background 0.2s, transform 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-1px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--white);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        padding: 0.85rem 2rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--white);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .stat-item {}
+
+      .stat-num {
+        font-family: 'Bitter', serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--gold-light);
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 2px;
+      }
+
+      .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .battery-card {
+        background: var(--navy-mid);
+        border: 1px solid rgba(192, 140, 26, 0.25);
+        border-radius: 12px;
+        padding: 2.5rem;
+        width: 340px;
+        position: relative;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+      }
+
+      .battery-illus {
+        width: 100%;
+        height: 180px;
+        background: var(--navy-light);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .batt-body {
+        width: 140px;
+        height: 90px;
+        background: var(--gray-700);
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 12px;
+      }
+
+      .batt-top {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 14px;
+        background: var(--gray-700);
+        border-radius: 4px 4px 0 0;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .batt-terminal {
+        width: 16px;
+        height: 10px;
+        border-radius: 3px 3px 0 0;
+      }
+
+      .batt-terminal.pos {
+        background: var(--gold);
+      }
+
+      .batt-terminal.neg {
+        background: var(--gray-300);
+      }
+
+      .batt-stripe {
+        width: 12px;
+        height: 60px;
+        border-radius: 3px;
+      }
+
+      .s1 {
+        background: #cc3333;
+      }
+
+      .s2 {
+        background: #1a73e8;
+      }
+
+      .s3 {
+        background: #cc3333;
+      }
+
+      .batt-label {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: 'Bitter', serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--cream);
+        letter-spacing: 0.1em;
+      }
+
+      .bc-title {
+        font-family: 'Bitter', serif;
+        color: var(--white);
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .bc-sub {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 1.2rem;
+      }
+
+      .bc-specs {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .bc-spec {
+        background: rgba(192, 140, 26, 0.15);
+        border: 1px solid rgba(192, 140, 26, 0.3);
+        color: var(--gold-light);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+
+      .hero-decor {
+        position: absolute;
+        right: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 40px solid rgba(192, 140, 26, 0.07);
+        pointer-events: none;
+      }
+
+      /* ── SECTIONS COMMON ── */
+      section {
+        padding: 6rem 2rem;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+      }
+
+      h2 {
+        font-family: 'Bitter', serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 900;
+        line-height: 1.2;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+
+      h2.light {
+        color: var(--white);
+      }
+
+      .section-desc {
+        font-size: 1.05rem;
+        color: var(--gray-500);
+        line-height: 1.75;
+        max-width: 580px;
+      }
+
+      /* ── SERVICES ── */
+      #servicos {
+        background: var(--white);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .service-card {
+        background: var(--cream);
+        border-radius: 10px;
+        padding: 2rem 1.75rem;
+        border: 1px solid rgba(12, 31, 63, 0.08);
+        transition: box-shadow 0.25s, transform 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+
+      .service-card:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-3px);
+      }
+
+      .service-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .serv-icon {
+        width: 52px;
+        height: 52px;
+        background: var(--navy);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        font-size: 1.5rem;
+      }
+
+      .service-card h3 {
+        font-family: 'Bitter', serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .service-card p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        line-height: 1.65;
+      }
+
+      /* ── PRODUCTS ── */
+      #produtos {
+        background: var(--cream);
+      }
+
+      .prod-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .filter-tabs {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.45rem 1.1rem;
+        border-radius: 20px;
+        border: 1.5px solid var(--gray-300);
+        background: transparent;
+        color: var(--gray-500);
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: 'Source Sans 3', sans-serif;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: var(--white);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .prod-card {
+        background: var(--white);
+        border-radius: 10px;
+        border: 1px solid rgba(12, 31, 63, 0.08);
+        overflow: hidden;
+        transition: box-shadow 0.25s, transform 0.25s;
+      }
+
+      .prod-card:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-3px);
+      }
+
+      .prod-img {
+        height: 160px;
+        background: var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        position: relative;
+      }
+
+      .prod-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 4px 8px;
+        border-radius: 4px;
+        text-transform: uppercase;
+      }
+
+      .prod-info {
+        padding: 1.25rem 1.25rem 1.5rem;
+      }
+
+      .prod-brand {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+      }
+
+      .prod-name {
+        font-family: 'Bitter', serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.4rem;
+      }
+
+      .prod-specs {
+        font-size: 0.82rem;
+        color: var(--gray-500);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .prod-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .prod-price {
+        font-family: 'Bitter', serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        color: var(--text-dark);
+      }
+
+      .prod-price small {
+        font-size: 0.75rem;
+        font-family: 'Source Sans 3', sans-serif;
+        font-weight: 400;
+        color: var(--gray-500);
+        display: block;
+        line-height: 1;
+      }
+
+      .btn-sm {
+        background: var(--navy);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+        white-space: nowrap;
+      }
+
+      .btn-sm:hover {
+        background: var(--navy-light);
+      }
+
+      /* ── ABOUT ── */
+      #sobre {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      #sobre .section-label {
+        color: var(--gold-light);
+      }
+
+      #sobre .section-desc {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .about-pillars {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .pillar {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        padding: 1.1rem 1.25rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 3px solid var(--gold);
+        border-radius: 0 var(--radius) var(--radius) 0;
+      }
+
+      .pillar-icon {
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .pillar h4 {
+        font-family: 'Bitter', serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.25rem;
+      }
+
+      .pillar p {
+        font-size: 0.875rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .about-numbers {
+        background: var(--navy-mid);
+        border: 1px solid rgba(192, 140, 26, 0.2);
+        border-radius: 12px;
+        padding: 2.5rem;
+      }
+
+      .about-nums-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .an-item {}
+
+      .an-num {
+        font-family: 'Bitter', serif;
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: var(--gold-light);
+        line-height: 1;
+      }
+
+      .an-label {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 4px;
+        line-height: 1.4;
+      }
+
+      .an-divider {
+        grid-column: 1 / -1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ── TESTIMONIALS ── */
+      #depoimentos {
+        background: var(--white);
+      }
+
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .test-card {
+        background: var(--cream);
+        border-radius: 10px;
+        padding: 1.75rem;
+        border: 1px solid rgba(12, 31, 63, 0.07);
+        position: relative;
+      }
+
+      .test-card::before {
+        content: '"';
+        font-family: 'Bitter', serif;
+        font-size: 5rem;
+        font-weight: 900;
+        color: var(--gold-pale);
+        position: absolute;
+        top: -10px;
+        left: 1.25rem;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .test-stars {
+        color: var(--gold);
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+        letter-spacing: 2px;
+      }
+
+      .test-text {
+        font-size: 0.95rem;
+        color: var(--text-mid);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+        font-style: italic;
+      }
+
+      .test-author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .test-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-light);
+        font-family: 'Bitter', serif;
+        font-weight: 900;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+      }
+
+      .test-name {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--text-dark);
+      }
+
+      .test-car {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+      }
+
+      /* ── CONTACT ── */
+      #contato {
+        background: var(--navy);
+      }
+
+      .contact-wrap {
+        background: var(--navy-mid);
+        border: 1px solid rgba(192, 140, 26, 0.2);
+        border-radius: 14px;
+        padding: 3.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+        margin-top: 3rem;
+      }
+
+      #contato h2 {
+        color: var(--white);
+      }
+
+      #contato .section-label {
+        color: var(--gold-light);
+      }
+
+      #contato .section-desc {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .contact-items {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+
+      .contact-item {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+
+      .ci-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: rgba(192, 140, 26, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+
+      .ci-label {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .ci-val {
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form select {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius);
+        padding: 0.8rem 1rem;
+        color: var(--white);
+        font-family: 'Source Sans 3', sans-serif;
+        font-size: 0.9rem;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .contact-form select option {
+        background: var(--navy);
+      }
+
+      .btn-wpp {
+        background: #25D366;
+        color: var(--white);
+        padding: 0.85rem 1.5rem;
+        border-radius: var(--radius);
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.2s, transform 0.15s;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        justify-content: center;
+        font-family: 'Source Sans 3', sans-serif;
+      }
+
+      .btn-wpp:hover {
+        background: #1ebe5a;
+        transform: translateY(-1px);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: #080f1d;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        border-top: 3px solid var(--gold);
+      }
+
+      .footer-logo {
+        font-family: 'Bitter', serif;
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-logo span {
+        color: var(--gold-light);
+      }
+
+      footer p {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      /* ── WHATSAPP FLOAT ── */
+      .wpp-float {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 200;
+        background: #25D366;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+        font-size: 1.6rem;
+      }
+
+      .wpp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+      }
+
+      .wpp-tooltip {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--navy);
+        color: var(--white);
+        font-family: 'Source Sans 3', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 6px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+
+      .wpp-float:hover .wpp-tooltip {
+        opacity: 1;
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        nav.open {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          position: fixed;
+          top: 64px;
+          left: 0;
+          right: 0;
+          background: var(--navy);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 1rem 0;
+        }
+
+        nav.open a {
+          height: 44px;
+          padding: 0 2rem;
+        }
+
+        .hero-grid,
+        .about-grid,
+        .contact-wrap {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .battery-card {
+          width: 100%;
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-wrap {
+          padding: 2rem;
+        }
+
+        .hero-decor {
+          display: none;
+        }
+
+        .about-nums-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      /* ── ANIMATIONS ── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <header>
+      <a href="#hero" class="logo">
+        <div class="logo-icon">⚡</div>
+        Volt<span>Max</span>
+      </a>
+      <nav id="main-nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato" class="nav-cta">Contato</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-grid">
+        <div class="fade-up">
+          <div class="hero-badge">Especialista Automotivo · João Pessoa</div>
+          <h1>Sua bateria<br>no ponto certo,<br><em>na hora certa.</em></h1>
+          <p class="hero-sub">Há mais de 15 anos fornecendo as melhores baterias automotivas do mercado. Atendimento técnico especializado, instalação no local e garantia real.</p>
+          <div class="hero-btns">
+            <a href="https://wa.me/5583999999999" class="btn-primary">💬 Falar no WhatsApp</a>
+            <a href="#produtos" class="btn-outline">Ver Produtos</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Anos no mercado</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">8mil</div>
+              <div class="stat-label">Clientes atendidos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Garantia real</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
+          <div class="battery-card">
+            <div class="battery-illus">
+              <div class="batt-body">
+                <div class="batt-top">
+                  <div class="batt-terminal pos"></div>
+                  <div class="batt-terminal neg"></div>
+                </div>
+                <div class="batt-stripe s1"></div>
+                <div class="batt-stripe s2"></div>
+                <div class="batt-stripe s3"></div>
+                <div class="batt-label">VOLTMAX PRO</div>
+              </div>
+            </div>
+            <div class="bc-title">Bateria 60Ah — Start Stop</div>
+            <div class="bc-sub">Ideal para veículos modernos com sistema Start-Stop</div>
+            <div class="bc-specs">
+              <span class="bc-spec">60Ah</span>
+              <span class="bc-spec">480A CCA</span>
+              <span class="bc-spec">12V</span>
+              <span class="bc-spec">2 Anos</span>
+            </div>
+          </div>
+          <div class="hero-decor"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicos">
+      <div class="container">
+        <div class="fade-up">
+          <div class="section-label">O que fazemos</div>
+          <h2>Serviços completos<br>para o seu veículo</h2>
+          <p class="section-desc">Da diagnose à instalação, cuidamos de tudo para que você saia com a certeza de um serviço bem feito.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card fade-up">
+            <div class="serv-icon">🔋</div>
+            <h3>Troca de Bateria</h3>
+            <p>Instalação rápida e segura com bornes protegidos, teste de carga e descarte responsável da bateria antiga.</p>
+          </div>
+          <div class="service-card fade-up" style="transition-delay:0.1s">
+            <div class="serv-icon">🔌</div>
+            <h3>Diagnose Elétrica</h3>
+            <p>Verificamos alternador, motor de partida e toda a rede elétrica do veículo antes de qualquer troca.</p>
+          </div>
+          <div class="service-card fade-up" style="transition-delay:0.2s">
+            <div class="serv-icon">🚗</div>
+            <h3>Atendimento no Local</h3>
+            <p>Ficou na mão? Vamos até você em João Pessoa e região. Ligue agora e resolva sem sair do lugar.</p>
+          </div>
+          <div class="service-card fade-up" style="transition-delay:0.3s">
+            <div class="serv-icon">🛡️</div>
+            <h3>Garantia e Suporte</h3>
+            <p>Todas as baterias têm garantia de fábrica e suporte técnico pós-venda. Seu investimento protegido.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="produtos">
+      <div class="container">
+        <div class="prod-header fade-up">
+          <div>
+            <div class="section-label">Catálogo</div>
+            <h2>Nossas Baterias</h2>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterProd(this,'todos')">Todos</button>
+            <button class="filter-btn" onclick="filterProd(this,'passeio')">Passeio</button>
+            <button class="filter-btn" onclick="filterProd(this,'suv')">SUV / Pickup</button>
+            <button class="filter-btn" onclick="filterProd(this,'start-stop')">Start-Stop</button>
+          </div>
+        </div>
+        <div class="products-grid" id="prod-grid">
+          <div class="prod-card fade-up" data-cat="passeio">
+            <div class="prod-img">🔋<span class="prod-badge">Mais Vendida</span></div>
+            <div class="prod-info">
+              <div class="prod-brand">Heliar</div>
+              <div class="prod-name">HF45D — Bateria 45Ah</div>
+              <div class="prod-specs">45Ah · 380A CCA · 12V<br>Carros populares (Uno, Argo, Gol)</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 389</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%2045Ah" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="prod-card fade-up" data-cat="passeio" style="transition-delay:0.1s">
+            <div class="prod-img">🔋</div>
+            <div class="prod-info">
+              <div class="prod-brand">Moura</div>
+              <div class="prod-name">ME60TE — Bateria 60Ah</div>
+              <div class="prod-specs">60Ah · 480A CCA · 12V<br>Sedãs e hatchs de médio porte</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 489</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%2060Ah" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="prod-card fade-up" data-cat="suv" style="transition-delay:0.15s">
+            <div class="prod-img">🔋</div>
+            <div class="prod-info">
+              <div class="prod-brand">Heliar</div>
+              <div class="prod-name">HF80D — Bateria 80Ah</div>
+              <div class="prod-specs">80Ah · 680A CCA · 12V<br>Hilux, S10, Pajero, Tracker</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 649</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%2080Ah" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="prod-card fade-up" data-cat="start-stop" style="transition-delay:0.2s">
+            <div class="prod-img">⚡<span class="prod-badge">AGM</span></div>
+            <div class="prod-info">
+              <div class="prod-brand">Varta</div>
+              <div class="prod-name">E39 — Start-Stop 70Ah</div>
+              <div class="prod-specs">70Ah · 760A · AGM 12V<br>Onix Plus, Cronos, Pulse Start-Stop</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 899</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%20AGM" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="prod-card fade-up" data-cat="suv" style="transition-delay:0.25s">
+            <div class="prod-img">🔋</div>
+            <div class="prod-info">
+              <div class="prod-brand">Moura</div>
+              <div class="prod-name">ME100KE — Bateria 100Ah</div>
+              <div class="prod-specs">100Ah · 850A CCA · 12V<br>Veículos pesados e vans</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 789</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%20100Ah" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="prod-card fade-up" data-cat="start-stop" style="transition-delay:0.3s">
+            <div class="prod-img">⚡</div>
+            <div class="prod-info">
+              <div class="prod-brand">Bosch</div>
+              <div class="prod-name">S5 AGM — 60Ah Start-Stop</div>
+              <div class="prod-specs">60Ah · 680A · AGM 12V<br>BMW, Audi, Jeep Compass, VW turbo</div>
+              <div class="prod-footer">
+                <div class="prod-price"><small>a partir de</small>R$ 1.190</div>
+                <a href="https://wa.me/5583999999999?text=Quero%20a%20bateria%20Bosch%20AGM" class="btn-sm">Pedir</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="sobre">
+      <div class="container">
+        <div class="about-grid">
+          <div class="fade-up">
+            <div class="section-label">Sobre nós</div>
+            <h2 class="light">Tradição e confiança em cada instalação</h2>
+            <p class="section-desc">Desde 2009, a VoltMax é referência em baterias automotivas em João Pessoa. Nossa equipe técnica qualificada garante diagnóstico preciso e atendimento honesto — sem surpresas.</p>
+            <div class="about-pillars">
+              <div class="pillar">
+                <div class="pillar-icon">🎯</div>
+                <div>
+                  <h4>Diagnose correta</h4>
+                  <p>Testamos o sistema elétrico completo antes de indicar qualquer bateria.</p>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon">💰</div>
+                <div>
+                  <h4>Preço justo e transparente</h4>
+                  <p>Sem cobranças surpresa. Orçamento completo antes de qualquer serviço.</p>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon">🏆</div>
+                <div>
+                  <h4>Marcas originais</h4>
+                  <p>Trabalhamos com Heliar, Moura, Varta e Bosch — marcas de verdade.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fade-up" style="transition-delay:0.15s">
+            <div class="about-numbers">
+              <div class="about-nums-grid">
+                <div class="an-item">
+                  <div class="an-num">15+</div>
+                  <div class="an-label">Anos de experiência no setor</div>
+                </div>
+                <div class="an-item">
+                  <div class="an-num">8k+</div>
+                  <div class="an-label">Clientes atendidos com satisfação</div>
+                </div>
+                <div class="an-divider"></div>
+                <div class="an-item">
+                  <div class="an-num">4</div>
+                  <div class="an-label">Marcas premium em estoque</div>
+                </div>
+                <div class="an-item">
+                  <div class="an-num">2 anos</div>
+                  <div class="an-label">Garantia em todos os produtos</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="depoimentos">
+      <div class="container">
+        <div class="fade-up" style="text-align:center">
+          <div class="section-label" style="justify-content:center;display:flex">O que dizem nossos clientes</div>
+          <h2 style="text-align:center">Quem comprou, voltou<br>e indicou.</h2>
+        </div>
+        <div class="test-grid">
+          <div class="test-card fade-up">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">Fui até a loja sem hora marcada e fui atendido na hora. Diagnosticaram o problema no alternador também, que eu não sabia. Serviço honesto e rápido.</p>
+            <div class="test-author">
+              <div class="test-avatar">RM</div>
+              <div>
+                <div class="test-name">Roberto Melo</div>
+                <div class="test-car">Fiat Argo 2021</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card fade-up" style="transition-delay:0.1s">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">A bateria do meu Tracker Start-Stop era específica e eles tinham em estoque. Instalação em menos de 30 minutos, com garantia e nota fiscal. Super recomendo!</p>
+            <div class="test-author">
+              <div class="test-avatar">PS</div>
+              <div>
+                <div class="test-name">Patricia Santos</div>
+                <div class="test-car">Chevrolet Tracker 2022</div>
+              </div>
+            </div>
+          </div>
+          <div class="test-card fade-up" style="transition-delay:0.2s">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-text">Liguei de manhã cedo, a bateria tinha morrido na rua. Em menos de uma hora o técnico estava lá. Preço justo e ótima bateria. Alívio total!</p>
+            <div class="test-author">
+              <div class="test-avatar">JA</div>
+              <div>
+                <div class="test-name">Jorge Albuquerque</div>
+                <div class="test-car">Toyota Hilux 2020</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contato">
+      <div class="container">
+        <div class="fade-up" style="text-align:center">
+          <div class="section-label" style="color:var(--gold-light);display:flex;justify-content:center">Fale conosco</div>
+          <h2 style="color:var(--white);text-align:center">Precisa de uma bateria?<br>Chama a gente.</h2>
+        </div>
+        <div class="contact-wrap fade-up">
+          <div>
+            <p class="section-desc">Atendemos pelo WhatsApp, telefone ou venha pessoalmente à nossa loja. Resposta rápida garantida.</p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="ci-icon">📍</div>
+                <div>
+                  <div class="ci-label">Endereço</div>
+                  <div class="ci-val">R. das Baterias, 123 — Tambaú, João Pessoa/PB</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="ci-icon">📞</div>
+                <div>
+                  <div class="ci-label">Telefone / WhatsApp</div>
+                  <div class="ci-val">(83) 9 9999-9999</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="ci-icon">🕐</div>
+                <div>
+                  <div class="ci-label">Horário de Funcionamento</div>
+                  <div class="ci-val">Seg–Sex: 08h–18h · Sáb: 08h–13h</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="ci-icon">📧</div>
+                <div>
+                  <div class="ci-label">E-mail</div>
+                  <div class="ci-val">contato@voltmaxbaterias.com.br</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="contact-form">
+              <div class="form-row">
+                <input type="text" placeholder="Seu nome">
+                <input type="tel" placeholder="WhatsApp">
+              </div>
+              <select>
+                <option value="" disabled="" selected="">Qual o seu veículo?</option>
+                <option>Carro de passeio</option>
+                <option>SUV / Caminhonete</option>
+                <option>Van / Utilitário</option>
+                <option>Veículo importado</option>
+              </select>
+              <textarea placeholder="Descreva a situação (opcional)..."></textarea>
+              <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20preciso%20de%20uma%20bateria!" class="btn-wpp" target="_blank">
+                💬 Enviar pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Volt<span>Max</span> Baterias</div>
+      <p>© 2025 VoltMax Baterias · João Pessoa, PB · Todos os direitos reservados</p>
+    </footer>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5583999999999?text=Ol%C3%A1%2C%20preciso%20de%20uma%20bateria!" class="wpp-float" target="_blank" aria-label="WhatsApp">
+      💬
+      <span class="wpp-tooltip">Falar no WhatsApp</span>
+    </a>
+
+    <script>
+      // Mobile nav
+      const ham = document.getElementById('hamburger');
+      const nav = document.getElementById('main-nav');
+      ham.addEventListener('click', () => nav.classList.toggle('open'));
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+      // Scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+      document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      // Product filter
+      function filterProd(btn, cat) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('#prod-grid .prod-card').forEach(card => {
+          card.style.display = (cat === 'todos' || card.dataset.cat === cat) ? '' : 'none';
+        });
+      }
+    </script>
+
+  </body>
+
+</html>

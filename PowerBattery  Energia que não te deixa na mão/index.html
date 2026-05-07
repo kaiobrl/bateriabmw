@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerBattery | Energia que não te deixa na mão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .battery-gradient {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      }
+
+      .accent-yellow {
+        color: #facc15;
+      }
+
+      .bg-accent-yellow {
+        background-color: #facc15;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <div class="bg-blue-700 p-2 rounded-lg">
+            <i class="fas fa-bolt text-yellow-400 text-xl"></i>
+          </div>
+          <span class="text-2xl font-extrabold tracking-tight text-blue-900 uppercase">Power<span class="text-yellow-500">Battery</span></span>
+        </div>
+
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex gap-8 font-semibold text-gray-600">
+          <a href="#home" class="hover:text-blue-700 transition">Início</a>
+          <a href="#servicos" class="hover:text-blue-700 transition">Serviços</a>
+          <a href="#produtos" class="hover:text-blue-700 transition">Baterias</a>
+          <a href="#contato" class="hover:text-blue-700 transition">Contato</a>
+        </div>
+
+        <div class="hidden md:block">
+          <a href="https://wa.me/5500000000000" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-bold flex items-center gap-2 transition shadow-lg">
+            <i class="fab fa-whatsapp"></i> Chamar Agora
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-2xl text-blue-900" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-4 space-y-4 shadow-xl">
+        <a href="#home" class="block font-semibold py-2" onclick="toggleMenu()">Início</a>
+        <a href="#servicos" class="block font-semibold py-2" onclick="toggleMenu()">Serviços</a>
+        <a href="#produtos" class="block font-semibold py-2" onclick="toggleMenu()">Baterias</a>
+        <a href="#contato" class="block font-semibold py-2" onclick="toggleMenu()">Contato</a>
+        <a href="#" class="block bg-green-500 text-white text-center py-3 rounded-xl font-bold">WhatsApp</a>
+      </div>
+    </header>
+
+    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 battery-gradient relative overflow-hidden text-white">
+      <div class="absolute top-0 right-0 opacity-10">
+        <i class="fas fa-car-battery text-[300px] -rotate-12 translate-x-20"></i>
+      </div>
+
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6">
+            Sua Bateria acabou? <br>
+            <span class="text-yellow-400">Nós entregamos e instalamos na hora!</span>
+          </h1>
+          <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-lg">
+            Atendimento rápido em até 40 minutos. As melhores marcas com garantia e o melhor preço da região.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#produtos" class="bg-yellow-400 hover:bg-yellow-500 text-blue-950 px-8 py-4 rounded-xl font-extrabold text-center transition-all shadow-xl">
+              VER PREÇOS
+            </a>
+            <a href="#servicos" class="bg-white/10 hover:bg-white/20 border border-white/30 px-8 py-4 rounded-xl font-bold text-center backdrop-blur-sm transition">
+              NOSSOS SERVIÇOS
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <img src="https://placehold.co/600x400/1e3a8a/ffffff?text=Baterias+Premium" alt="Baterias" class="rounded-2xl shadow-2xl border-4 border-white/10" onerror="this.src='https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&amp;fit=crop&amp;q=80&amp;w=600'">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="p-4">
+            <i class="fas fa-truck-fast text-3xl text-blue-600 mb-2"></i>
+            <h3 class="font-bold text-sm md:text-base">Entrega Grátis</h3>
+          </div>
+          <div class="p-4">
+            <i class="fas fa-tools text-3xl text-blue-600 mb-2"></i>
+            <h3 class="font-bold text-sm md:text-base">Instalação Inclusa</h3>
+          </div>
+          <div class="p-4">
+            <i class="fas fa-shield-alt text-3xl text-blue-600 mb-2"></i>
+            <h3 class="font-bold text-sm md:text-base">Garantia de Fábrica</h3>
+          </div>
+          <div class="p-4">
+            <i class="fas fa-hand-holding-dollar text-3xl text-blue-600 mb-2"></i>
+            <h3 class="font-bold text-sm md:text-base">Melhor Avaliação</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4 text-center mb-16">
+        <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">O que fazemos</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold mt-2">Serviços Especializados</h2>
+        <div class="w-20 h-1.5 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+          <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-clock text-2xl text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Socorro 24h</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Ficou parado na rua? Nossa equipe de prontidão vai até você em qualquer lugar da cidade.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+          <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-vial text-2xl text-yellow-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Teste de Alternador</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Verificamos se o problema é realmente a bateria ou se o sistema de carga do veículo está com falha.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+          <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-recycle text-2xl text-green-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Descarte Ecológico</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Recolhemos sua bateria velha e garantimos o descarte correto seguindo as normas ambientais.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="produtos" class="py-20 bg-white">
+      <div class="container mx-auto px-4 mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+        <div>
+          <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">Catálogo</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold mt-2">Baterias em Destaque</h2>
+        </div>
+        <div class="flex gap-2">
+          <button class="bg-gray-100 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-bold transition">Carros</button>
+          <button class="bg-gray-100 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-bold transition">Motos</button>
+          <button class="bg-gray-100 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-bold transition">Caminhões</button>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Produto 1 -->
+        <div class="border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all">
+          <div class="bg-gray-50 rounded-2xl mb-4 p-4 flex items-center justify-center h-48">
+            <img src="https://placehold.co/200x150?text=Bateria+60Ah" alt="Bateria 60Ah" class="max-h-full">
+          </div>
+          <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Mais Vendida</span>
+          <h3 class="text-lg font-bold mt-2">Moura 60Ah</h3>
+          <p class="text-sm text-gray-500 mb-4">M60AD - 18 meses de garantia</p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-2xl font-black text-blue-900">R$ 489,00</span>
+            <a href="#" class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-2 text-center">*Preço à vista com a troca da carcaça</p>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all">
+          <div class="bg-gray-50 rounded-2xl mb-4 p-4 flex items-center justify-center h-48">
+            <img src="https://placehold.co/200x150?text=Bateria+Heliar" alt="Bateria Heliar" class="max-h-full">
+          </div>
+          <span class="text-xs font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded">Premium</span>
+          <h3 class="text-lg font-bold mt-2">Heliar 60Ah</h3>
+          <p class="text-sm text-gray-500 mb-4">Proteção 24h inclusa</p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-2xl font-black text-blue-900">R$ 519,00</span>
+            <a href="#" class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-2 text-center">*Preço à vista com a troca da carcaça</p>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all">
+          <div class="bg-gray-50 rounded-2xl mb-4 p-4 flex items-center justify-center h-48">
+            <img src="https://placehold.co/200x150?text=Bateria+Zetta" alt="Bateria Zetta" class="max-h-full">
+          </div>
+          <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">Custo-benefício</span>
+          <h3 class="text-lg font-bold mt-2">Zetta 60Ah</h3>
+          <p class="text-sm text-gray-500 mb-4">Fabricada pela Moura</p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-2xl font-black text-blue-900">R$ 389,00</span>
+            <a href="#" class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-2 text-center">*Preço à vista com a troca da carcaça</p>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all">
+          <div class="bg-gray-50 rounded-2xl mb-4 p-4 flex items-center justify-center h-48">
+            <img src="https://placehold.co/200x150?text=Bateria+Moto" alt="Bateria Moto" class="max-h-full">
+          </div>
+          <span class="text-xs font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded">Motocicletas</span>
+          <h3 class="text-lg font-bold mt-2">Moura Moto 5Ah</h3>
+          <p class="text-sm text-gray-500 mb-4">Para CG, Titan, Biz</p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-2xl font-black text-blue-900">R$ 169,00</span>
+            <a href="#" class="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">
+              <i class="fas fa-cart-plus"></i>
+            </a>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-2 text-center">*Preço à vista com a troca da carcaça</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-20 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl font-extrabold mb-6">Fale com um Especialista</h2>
+            <p class="text-gray-400 mb-10">Preencha os dados ou nos chame no WhatsApp para tirar dúvidas sobre qual a bateria ideal para o seu veículo.</p>
+
+            <form class="space-y-4" onsubmit="event.preventDefault();">
+              <div class="grid md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Seu Nome" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                <input type="text" placeholder="Seu Telefone" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+              </div>
+              <select class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition text-gray-400">
+                <option>Selecione seu Veículo</option>
+                <option>Carro</option>
+                <option>Moto</option>
+                <option>Caminhão</option>
+              </select>
+              <textarea rows="4" placeholder="Sua Mensagem" class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition"></textarea>
+              <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition duration-300">
+                ENVIAR MENSAGEM
+              </button>
+            </form>
+          </div>
+
+          <div class="lg:w-1/2 flex flex-col gap-6">
+            <div class="bg-gray-800 p-8 rounded-3xl">
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i class="fas fa-location-dot text-yellow-400"></i> Onde estamos
+              </h3>
+              <p class="text-gray-400 mb-4">Av. Principal das Baterias, 1000<br>Centro - Sua Cidade / UF</p>
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center">
+                    <i class="fas fa-phone text-blue-400"></i>
+                  </div>
+                  <span>(00) 3333-0000</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 bg-green-900/50 rounded-full flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-green-400"></i>
+                  </div>
+                  <span>(00) 99999-0000</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder de Mapa -->
+            <div class="bg-gray-800 h-64 rounded-3xl overflow-hidden grayscale">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197587007271!2d-46.65225172466986!3d-23.561349678800262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da173f33%3A0x73ef6236b35d796!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-gray-800">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-500 text-sm">
+          © 2024 PowerBattery - Todos os direitos reservados. <br>
+          Desenvolvido com <i class="fas fa-heart text-red-600"></i> para sua segurança.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp Mobile -->
+    <a href="#" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 md:hidden animate-bounce">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      }
+
+      // Adicionar sombra ao header no scroll
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+          header.classList.add('shadow-lg');
+        } else {
+          header.classList.remove('shadow-lg');
+        }
+      });
+    </script>
+
+  </body>
+
+</html>
